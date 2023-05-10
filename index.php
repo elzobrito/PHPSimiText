@@ -3,10 +3,7 @@
 namespace PHPSimiTextApp;
 
 use PHPSimiTextApp\CosineSimilarityCalculator\CosineSimilarityCalculator;
-use PHPSimiTextApp\StopWordRemover\StopWordRemover;
 use PHPSimiTextApp\TextProcessor\TextProcessor;
-use PHPSimiTextApp\Tokenizer\Tokenizer;
-use PHPSimiTextApp\Vectorizer\Vectorizer;
 
 require_once  __DIR__ . '/vendor/autoload.php';
 
