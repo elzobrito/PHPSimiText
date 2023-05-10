@@ -10,15 +10,21 @@ class StopWordRemoval
     {
         $this->stopWords = $stopWords;
     }
-
     public function removeStopWords($tokens)
     {
+        // Convert stop words to a set (associative array)
+        $stopWordsSet = array_flip($this->stopWords);
+
         // Remove stop words from each set of tokens
         $filteredTokens = [];
         foreach ($tokens as $textTokens) {
-            $filteredTokens[] = array_values(array_filter($textTokens, function ($token) {
-                return !in_array($token, $this->stopWords);
-            }));
+            $filteredTextTokens = [];
+            foreach ($textTokens as $token) {
+                if (!isset($stopWordsSet[$token])) {
+                    $filteredTextTokens[] = $token;
+                }
+            }
+            $filteredTokens[] = $filteredTextTokens;
         }
 
         return $filteredTokens;

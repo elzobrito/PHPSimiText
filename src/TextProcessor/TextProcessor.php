@@ -2,21 +2,20 @@
 
 namespace PHPSimiTextApp\TextProcessor;
 
-use PHPSimiTextApp\TextProcessor\TextTokenizer;
-use PHPSimiTextApp\TextProcessor\StopWordRemoval;
-use PHPSimiTextApp\TextProcessor\TextVectorizer;
-
 class TextProcessor
 {
     private $textTokenizer;
     private $stopWordRemoval;
     private $textVectorizer;
 
-    public function __construct($stopWords)
-    {
-        $this->textTokenizer = new TextTokenizer();
-        $this->stopWordRemoval = new StopWordRemoval($stopWords);
-        $this->textVectorizer = new TextVectorizer();
+    public function __construct(
+        TextTokenizer $textTokenizer,
+        StopWordRemoval $stopWordRemoval,
+        TextVectorizer $textVectorizer
+    ) {
+        $this->textTokenizer = $textTokenizer;
+        $this->stopWordRemoval = $stopWordRemoval;
+        $this->textVectorizer = $textVectorizer;
     }
 
     public function processTexts($texts)
